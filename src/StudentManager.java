@@ -146,7 +146,7 @@ public class StudentManager {
                 flag = true;
             }
         }
-
+//        System.out.println("x = "+x);
         if ( flag == false ){
             System.out.println("未查找到相关学生信息");
             return;
@@ -162,7 +162,6 @@ public class StudentManager {
             System.out.println("出生日期："+stu[indexs[n]].getBirDate());
             System.out.println("性别："+stu[indexs[n]].getGender());
             System.out.println("-------------------------------");
-            n++;
         }
 
     }
@@ -204,7 +203,7 @@ public class StudentManager {
         System.out.print("请选择删除以上第几位学生的信息：");
         while (true) {
             n = scanner.nextInt();
-            if (n > x) {
+            if (n > x || n <= 0) {
                 System.out.print("输入错误，请在正确范围内选择");
             }else {
                 break;
@@ -258,7 +257,7 @@ public class StudentManager {
         System.out.print("请选择修改以上第几位学生的信息：");
         while (true) {
             n = scanner.nextInt();
-            if (n > x) {
+            if (n > x || n <= 0) {
                 System.out.print("输入错误，请在正确范围内选择");
             }else {
                 break;
@@ -363,7 +362,7 @@ public class StudentManager {
         int i;
         for (i=0; i<num; i++){
             System.out.println("-------------------------------");
-            System.out.println("查找到第"+(i+1)+"位学生信息如下");
+            System.out.println("第"+(i+1)+"位学生信息如下");
             System.out.println("学号："+stu[i].getID());
             System.out.println("姓名："+stu[i].getName());
             System.out.println("年龄："+stu[i].getAge());
