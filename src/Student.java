@@ -5,6 +5,15 @@ public class Student {
     private String name;
     private LocalDate birDate;
     private boolean gender;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public int getID() {
         return ID;

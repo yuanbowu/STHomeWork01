@@ -88,6 +88,18 @@ public class StudentManager {
 
         flag = true;
         while (flag) {
+            System.out.print("请输入学生年龄：");
+            try {
+                int age = Integer.parseInt( scanner.next() );
+                s.setAge(age);
+                flag = false;
+            }catch (NumberFormatException e){
+                System.out.println("年龄输入格式错误，请重新输入");
+            }
+        }
+
+        flag = true;
+        while (flag) {
             System.out.println("按照指定格式输入学生出生日期，例如2018年2月2日即为20180202");
             System.out.print("请输入学生出生日期：");
             try {
@@ -146,6 +158,7 @@ public class StudentManager {
             System.out.println("查找到第"+(n+1)+"位学生信息如下");
             System.out.println("学号："+stu[indexs[n]].getID());
             System.out.println("姓名："+stu[indexs[n]].getName());
+            System.out.println("年龄："+stu[indexs[n]].getAge());
             System.out.println("出生日期："+stu[indexs[n]].getBirDate());
             System.out.println("性别："+stu[indexs[n]].getGender());
             System.out.println("-------------------------------");
@@ -182,6 +195,7 @@ public class StudentManager {
             System.out.println("查找到第"+(n+1)+"位学生信息如下");
             System.out.println("学号："+stu[indexs[n]].getID());
             System.out.println("姓名："+stu[indexs[n]].getName());
+            System.out.println("年龄："+stu[indexs[n]].getAge());
             System.out.println("出生日期："+stu[indexs[n]].getBirDate());
             System.out.println("性别："+stu[indexs[n]].getGender());
             System.out.println("-------------------------------");
@@ -235,6 +249,7 @@ public class StudentManager {
             System.out.println("查找到第"+(n+1)+"位学生信息如下");
             System.out.println("学号："+stu[indexs[n]].getID());
             System.out.println("姓名："+stu[indexs[n]].getName());
+            System.out.println("年龄："+stu[indexs[n]].getAge());
             System.out.println("出生日期："+stu[indexs[n]].getBirDate());
             System.out.println("性别："+stu[indexs[n]].getGender());
             System.out.println("-------------------------------");
@@ -254,11 +269,12 @@ public class StudentManager {
         System.out.println("该学生的信息如下");
         System.out.println("学号："+stu[pos].getID());
         System.out.println("姓名："+stu[pos].getName());
+        System.out.println("年龄："+stu[pos].getAge());
         System.out.println("出生日期："+stu[pos].getBirDate());
         System.out.println("性别："+stu[pos].getGender());
         System.out.println("-------------------------------");
         System.out.println("请选择需要修改哪项信息：");
-        System.out.println("1.学号 2.姓名 3.出生日期 4.性别");
+        System.out.println("1.学号 2.姓名 3.年龄 4.出生日期 5.性别");
         int choose;
         while (true){
             choose = scanner.nextInt();
@@ -272,10 +288,9 @@ public class StudentManager {
         boolean lag;
         switch (choose){
             case 1:
-                System.out.print("请输入新学号：");
                 lag = true;
                 while (lag) {
-                    System.out.print("请输入学生学号：");
+                    System.out.print("请输入新学号：");
                     try {
                         int id = Integer.parseInt( scanner.next() );
                         if (map.get(id) == null) {
@@ -300,6 +315,19 @@ public class StudentManager {
             case 3:
                 lag = true;
                 while (lag) {
+                    System.out.print("请输入新年龄：");
+                    try {
+                        int age = Integer.parseInt( scanner.next() );
+                        stu[pos].setAge(age);
+                        lag = false;
+                    }catch (NumberFormatException e){
+                        System.out.println("年龄输入格式错误，请重新输入");
+                    }
+                }
+                break;
+            case 4:
+                lag = true;
+                while (lag) {
                     System.out.println("按照指定格式输入学生出生日期，例如2018年2月2日即为20180202");
                     System.out.print("请输入学生出生日期：");
                     try {
@@ -310,7 +338,7 @@ public class StudentManager {
                     }
                 }
                 break;
-            case 4:
+            case 5:
                 lag = true;
                 while (lag) {
                     System.out.print("请输入学生性别（男或女）：");
@@ -329,12 +357,16 @@ public class StudentManager {
     }
 
     public void Output(){
+        if (num == 0){
+            System.out.println("学生信息为空！");
+        }
         int i;
         for (i=0; i<num; i++){
             System.out.println("-------------------------------");
             System.out.println("查找到第"+(i+1)+"位学生信息如下");
             System.out.println("学号："+stu[i].getID());
             System.out.println("姓名："+stu[i].getName());
+            System.out.println("年龄："+stu[i].getAge());
             System.out.println("出生日期："+stu[i].getBirDate());
             System.out.println("性别："+stu[i].getGender());
             System.out.println("-------------------------------");
@@ -342,6 +374,7 @@ public class StudentManager {
     }
 
     public void Exit(){
+        System.out.println("成功退出系统，谢谢使用！");
         System.exit(0);
     }
 
